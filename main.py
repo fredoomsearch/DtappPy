@@ -35,10 +35,10 @@ app.include_router(data_processing.router)
 app.include_router(ml_models.router)
 
 from sqlalchemy.orm import Session
-from Backend.utils.database import engine, SessionLocal
-from Backend.models.crypto_model import Base
-from Backend.models.event_model import Base as eventBase
-from Backend.models.scraped_data_model import Base as scrapedBase
+from utils.database import engine, SessionLocal
+from models.crypto_model import Base
+from models.event_model import Base as eventBase
+from models.scraped_data_model import Base as scrapedBase
 
 @app.on_event("startup")
 async def startup_event():
