@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from Backend.models import event_model
-from Backend.schemas import EventCreate # Import from schemas
+from models import event_model
+from schemas import EventCreate # Import from schemas
 
 def create_event(db: Session, event: EventCreate):
     db_event = event_model.EventData(**event.model_dump())
