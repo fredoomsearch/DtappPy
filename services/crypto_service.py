@@ -1,17 +1,17 @@
 from typing import List
 from sqlalchemy.orm import Session
-from Backend.repositories import crypto_repo
-from Backend.schemas import CryptoCreate  # Import from schemas.py
-from Backend.services import event_service
-from Backend.api import events
-from Backend.models.crypto_model import CryptoData
-from Backend.models.event_model import EventData
+from repositories import crypto_repo
+from schemas import CryptoCreate  # Import from schemas.py
+from services import event_service
+from api import events
+from models.crypto_model import CryptoData
+from models.event_model import EventData
 from dateutil import parser  # Use dateutil.parser for parsing timestamps
 import pandas as pd
 import logging
 from fastapi import HTTPException
 import requests
-from Backend.services.base_service import BaseService
+from services.base_service import BaseService
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
