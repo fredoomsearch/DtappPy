@@ -19,8 +19,8 @@ import numpy as np  # IMPORTANT: Import numpy for log transformation
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from Backend.utils import database
-from Backend.services import crypto_service
+from utils import database
+from services import crypto_service
 import logging
 import os
 import requests 
