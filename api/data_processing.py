@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from Backend.api import events
-from Backend.utils import database
-from Backend.data_acquisition import web_scraper
-from Backend.services import event_service
+from api import events
+from utils import database
+from data_acquisition import web_scraper
+from services import event_service
 import logging
 
 logger = logging.getLogger(__name__)
