@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from Backend.api import events
-from Backend.utils import database
+from api import events
+from utils import database
 from sklearn.linear_model import LinearRegression
 import pandas as pd
-from Backend.services import event_service, crypto_service
+from services import event_service, crypto_service
 import logging
 
 router = APIRouter()
