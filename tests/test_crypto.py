@@ -8,10 +8,10 @@ import os
 import xml.etree.ElementTree as ET
 from unittest.mock import patch
 
-from Backend.main import app
-from Backend.utils.database import Base, get_db
-from Backend.models import crypto_model, event_model
-from Backend.services import crypto_service
+from main import app
+from utils.database import Base, get_db
+from models import crypto_model, event_model
+from services import crypto_service
 
 # Define the test database URL (use an in-memory SQLite database for testing)
 SQLALCHEMY_DATABASE_URL = "postgresql://myuser:mypassword@localhost/mydb"
