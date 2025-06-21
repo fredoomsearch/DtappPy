@@ -1,7 +1,7 @@
 import hashlib
 from fastapi import FastAPI, HTTPException, Request, logger
 from fastapi.responses import HTMLResponse
-from api import crypto, events, data_processing, ml_models
+from api import crypto, data_processing, ml_models
 from utils import database
 from models import crypto_model, event_model, scraped_data_model
 from fastapi.middleware.cors import CORSMiddleware  # Import CORS
