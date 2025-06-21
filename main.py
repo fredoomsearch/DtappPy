@@ -30,9 +30,9 @@ app.add_middleware(
 )
 
 app.include_router(crypto.router)
-app.include_router(events.router)
-app.include_router(data_processing.router)
-app.include_router(ml_models.router)
+app.include_router(router)
+app.include_router(router)
+app.include_router(router)
 
 from sqlalchemy.orm import Session
 from utils.database import engine, SessionLocal
