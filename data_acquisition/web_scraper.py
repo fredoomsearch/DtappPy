@@ -6,11 +6,11 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom import minidom
-from Backend.schemas import NewsArticle
-from Backend.services import event_service
-from Backend.api import events
-from Backend.models import scraped_data_model
-from Backend.data_acquisition import crypto_api  # Import crypto_api
+from schemas import NewsArticle
+from services import event_service
+from api import events
+from models import scraped_data_model
+from data_acquisition import crypto_api  # Import crypto_api
 
 logger = logging.getLogger(__name__)
 
