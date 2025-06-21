@@ -1,8 +1,8 @@
 import pytest
 import requests
 from fastapi.testclient import TestClient
-from Backend.main import app  # Import your FastAPI app
-from Backend.utils import database
+from main import app  # Import your FastAPI app
+from utils import database
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
