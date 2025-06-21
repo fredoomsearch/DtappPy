@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
-from Backend.models import crypto_model
-from Backend.schemas import CryptoCreate
+from models import crypto_model
+from schemas import CryptoCreate
 from typing import List, Optional
-from Backend.repositories.base_repository import BaseRepository
+from repositories.base_repository import BaseRepository
 
 class CryptoRepository(BaseRepository[crypto_model.CryptoData, CryptoCreate]):
     def __init__(self, db: Session):
