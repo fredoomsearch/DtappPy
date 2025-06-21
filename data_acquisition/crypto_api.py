@@ -1,7 +1,7 @@
 import requests
 from fastapi import HTTPException
-from Backend.services import event_service
-from Backend.api import events
+from services import event_service
+from api import events
 from sqlalchemy.orm import Session
 import logging
 
