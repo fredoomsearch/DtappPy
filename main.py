@@ -1,24 +1,24 @@
 import hashlib
 from fastapi import FastAPI, HTTPException, Request, logger
 from fastapi.responses import HTMLResponse
-from api import crypto
+from api import crypto, events, data_processing, ml_models
 from utils import database
 from models import crypto_model, event_model, scraped_data_model
-from fastapi.middleware.cors import CORSMiddleware  # Import CORS
-from api import crypto
-
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-app.include_router(crypto.router, prefix="/api")
-
+app.include_router(crypto.router)
+app.include_router(events.router)
+app.include_router(data_processing.router)
+app.include_router(ml_models.router)
 
 # CORS configuration
 origins = [
-    "http://localhost:4200",  # Allow requests from your Angular frontend (default port)
+    "http://localhost:4200",
     "http://localhost",
     "http://127.0.0.1",
     "http://127.0.0.1:4200",
-    "*", #REMOVE IN PRODUCTION
+    "*", # REMOVE IN PRODUCTION
 ]
 
 app.add_middleware(
@@ -29,11 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(crypto.router)
-app.include_router(router)
-app.include_router(router)
-app.include_router(router)
-
 from sqlalchemy.orm import Session
 from utils.database import engine, SessionLocal
 from models.crypto_model import Base
@@ -42,7 +37,6 @@ from models.scraped_data_model import Base as scrapedBase
 
 @app.on_event("startup")
 async def startup_event():
-    # Create database tables on startup
     Base.metadata.create_all(bind=engine)
     eventBase.metadata.create_all(bind=engine)
     scrapedBase.metadata.create_all(bind=engine)
@@ -57,6 +51,8 @@ def get_db():
         raise
     finally:
         db.close()
+
+# ... (rest of your code)
 
 @app.post("/api/payu/notification")
 async def payu_notification(request: Request):
