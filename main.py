@@ -13,13 +13,12 @@ app.include_router(crypto.router)
 app.include_router(events.router)
 app.include_router(data_processing.router)
 app.include_router(ml_models.router)
-
+app.include_router(news_router)
 
 # CORS configuration
 origins = [
     "https://dtapppyfront.onrender.com",
-    "https://dtapppyfront.onrender.com/news",
-    "https://dtapppyfront.onrender.com/crypto"
+
     
     # ...other origins...
 ]
