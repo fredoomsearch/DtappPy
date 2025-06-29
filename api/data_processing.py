@@ -10,14 +10,11 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-#FILES WHAT USE THIS END POINT CRYPTO_API , WEB_SCRAPER
-
 def assign_topic(article):
     """Assign a topic to an article based on its content."""
     if not isinstance(article, dict):
         logger.error(f"Invalid article format: {article}")
-        return "Other"  # Default topic for invalid data
-
+        return "Other"
     title = (article.get('title') or '').lower()
     description = (article.get('description') or '').lower()
     if any(word in title or word in description for word in ['stock', 'market', 'gdp', 'inflation']):
@@ -51,7 +48,6 @@ def get_news(db: Session = Depends(database.get_db)):
     logger.info("Fetching news data...")
     news_data, scraped_data = web_scraper.scrape_website(news_url, news_url2, db)
    
-    # Process the news data safely
     processed_news = process_news_data(news_data)
     processed_wsj = process_news_data(scraped_data)
 
@@ -65,7 +61,6 @@ def get_news(db: Session = Depends(database.get_db)):
     combined_news = {"newsapi": processed_news, "wsj": processed_wsj}
     logger.info(f"Combined news: {combined_news}")
     return combined_news
-
 
 
 
