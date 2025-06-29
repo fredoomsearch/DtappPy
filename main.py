@@ -5,7 +5,9 @@ from api import crypto, events, data_processing, ml_models
 from utils import database
 from models import crypto_model, event_model, scraped_data_model
 from fastapi.middleware.cors import CORSMiddleware
+from api.news import router as news_router
 
+app.include_router(news_router)
 app = FastAPI()
 app.include_router(crypto.router)
 app.include_router(events.router)
