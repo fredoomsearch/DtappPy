@@ -14,8 +14,8 @@ app.include_router(ml_models.router)
 
 # CORS configuration
 origins = [
-    "https://your-frontend-service.onrender.com",  # <-- Use your actual frontend URL
-    # "http://localhost:4200",  # Keep for local dev if needed
+    "https://dtapppyfront.onrender.com",
+    # ...other origins...
 ]
 
 app.add_middleware(
