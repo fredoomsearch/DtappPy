@@ -18,7 +18,9 @@ app.include_router(ml_models.router)
 # CORS configuration
 origins = [
     "https://dtapppyfront.onrender.com",
-    "https://dtapppyfront.onrender.com/news"
+    "https://dtapppyfront.onrender.com/news",
+    "https://dtapppyfront.onrender.com/crypto"
+    
     # ...other origins...
 ]
 
