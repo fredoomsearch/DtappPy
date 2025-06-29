@@ -7,12 +7,13 @@ from models import crypto_model, event_model, scraped_data_model
 from fastapi.middleware.cors import CORSMiddleware
 from api.data_processing import router as news_router
 
-app.include_router(news_router)
+
 app = FastAPI()
 app.include_router(crypto.router)
 app.include_router(events.router)
 app.include_router(data_processing.router)
 app.include_router(ml_models.router)
+app.include_router(news_router) 
 
 # CORS configuration
 origins = [
