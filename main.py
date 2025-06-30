@@ -18,6 +18,7 @@ app.include_router(ml_models.router)
 # CORS configuration
 origins = [
     "https://dtapppyfront.onrender.com",
+    "https://dtapppyfront.onrender.com/news",
 
     
     # ...other origins...
@@ -28,6 +29,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:4200",
         "https://dtapppyfront.onrender.com"
+        "https://dtapppyfront.onrender.com/news",
     ],
     allow_credentials=True,
     allow_methods=["*"],
