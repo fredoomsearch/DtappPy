@@ -62,5 +62,8 @@ def get_news(db: Session = Depends(database.get_db)):
     logger.info(f"Combined news: {combined_news}")
     return combined_news
 
+@router.get("/")
+async def get_news():
+    return {"message": "News fetched!"}
 
 
