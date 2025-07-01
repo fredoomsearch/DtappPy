@@ -22,12 +22,53 @@ origins = [
 ]
 
 app.add_middleware(
+    CORSMiddleware,  # <--- This is required!
+    allow_origins=[
+        "https://dtapppyfront.onrender.com",
+        "http://localhost:4200"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
+
+
+
+
+app = FastAPI()
+
+# CORS configuration
+origins = [
+    "https://dtapppyfront.onrender.com",
+    "http://localhost:4200"
+]
+
+app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(crypto.router, prefix="/api")
+app.include_router(events.router, prefix="/api")
+app.include_router(data_processing.router, prefix="/api")
+app.include_router(ml_models.router, prefix="/api")
+
+# ...rest of your code (DB setup, PayU, etc.)...
+
+
+
+
+
+
+
+
+
 
 from sqlalchemy.orm import Session
 from utils.database import engine, SessionLocal
