@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from api import events
-from utils import database
+from Backend.api import events
+from Backend.utils import database
 from sklearn.linear_model import LinearRegression
 import pandas as pd
-from services import event_service, crypto_service
+from Backend.services import event_service, crypto_service
 import logging
 
 router = APIRouter()
@@ -111,7 +111,7 @@ def download_csv(db: Session = Depends(database.get_db)):
         return FileResponse("predictions.csv", media_type="text/csv", filename="predictions.csv")
     except Exception as e:
         logger.error("Could not serve CSV: %s", e)
-        raise HTTPException(500, "CSV not available")
+        raise
 
 
 
