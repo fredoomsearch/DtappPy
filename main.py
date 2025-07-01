@@ -1,42 +1,11 @@
 import hashlib
-from fastapi import FastAPI, HTTPException, Request, logger
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from api import crypto, events, data_processing, ml_models
 from utils import database
 from models import crypto_model, event_model, scraped_data_model
-from fastapi.middleware.cors import CORSMiddleware
 from api.data_processing import router as news_router
-
-
-app.include_router(crypto.router)
-app.include_router(events.router)
-app.include_router(data_processing.router)
-app.include_router(ml_models.router)
-app.include_router(csv_download.router, prefix="/api")  # <--- FIXED
-app.include_router(news_router, prefix="/api/news")
-
-# ✅ CORS for frontend (localhost & Render)
-origins = [
-    "http://localhost:4200",
-    "https://dtapppyfront.onrender.com"
-]
-
-app.add_middleware(
-    CORSMiddleware,  # <--- This is required!
-    allow_origins=[
-        "https://dtapppyfront.onrender.com",
-        "http://localhost:4200"
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-
-
-
-
 
 app = FastAPI()
 
@@ -58,8 +27,7 @@ app.include_router(crypto.router, prefix="/api")
 app.include_router(events.router, prefix="/api")
 app.include_router(data_processing.router, prefix="/api")
 app.include_router(ml_models.router, prefix="/api")
-
-# ...rest of your code (DB setup, PayU, etc.)...
+app.include_router(news_router, prefix="/api/news")
 
 
 
