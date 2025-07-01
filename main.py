@@ -23,11 +23,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(crypto.router, prefix="/api")
-app.include_router(events.router, prefix="/api")
-app.include_router(data_processing.router, prefix="/api")
-app.include_router(ml_models.router, prefix="/api")
-app.include_router(news_router, prefix="/api/news")
+app.include_router(crypto.router)
+app.include_router(events.router)
+app.include_router(data_processing.router)
+app.include_router(ml_models.router)
+
 
 
 
