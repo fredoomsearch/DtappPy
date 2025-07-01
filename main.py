@@ -13,7 +13,8 @@ app.include_router(crypto.router)
 app.include_router(events.router)
 app.include_router(data_processing.router)
 app.include_router(ml_models.router)
-app.include_router(news_router, prefix="/api/news")
+app.include_router(csv_router, prefix="/api")  # or without prefix if root-level
+
 
 # CORS configuration
 origins = [
