@@ -8,23 +8,22 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.data_processing import router as news_router
 
 
-app = FastAPI()
 app.include_router(crypto.router)
 app.include_router(events.router)
 app.include_router(data_processing.router)
 app.include_router(ml_models.router)
-app.include_router(csv_router, prefix="/api")  # or without prefix if root-level
+app.include_router(csv_download.router, prefix="/api")  # <--- FIXED
 app.include_router(news_router, prefix="/api/news")
 
-# CORS configuration
+# ✅ CORS for frontend (localhost & Render)
 origins = [
-    "http://localhost:4200",  # for local dev
-    "https://dtapppyfront.onrender.com",  # your frontend on Render
+    "http://localhost:4200",
+    "https://dtapppyfront.onrender.com"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # <-- Only these origins are allowed
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
