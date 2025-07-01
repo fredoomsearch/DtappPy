@@ -112,3 +112,6 @@ def download_csv(db: Session = Depends(database.get_db)):
     except Exception as e:
         logger.error("Could not serve CSV: %s", e)
         raise HTTPException(500, "CSV not available")
+
+
+
