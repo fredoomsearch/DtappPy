@@ -40,6 +40,7 @@ def process_news_data(news_data):
 @router.get("/news")
 @router.get("/news/")
 def get_news(db: Session = Depends(database.get_db)):
+    return {"message": "News endpoint is working!"}
     """
     Fetches news data from NewsAPI and WSJ and returns it as JSON.
     """
