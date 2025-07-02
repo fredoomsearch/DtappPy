@@ -40,10 +40,6 @@ def process_news_data(news_data):
 @router.get("/news")
 @router.get("/news/")
 def get_news(db: Session = Depends(database.get_db)):
-    return {"message": "News endpoint is working!"}
-    """
-    Fetches news data from NewsAPI and WSJ and returns it as JSON.
-    """
     news_url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=7711f5f714754e09a77c6d2640f1111e"
     news_url2 = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=7711f5f714754e09a77c6d2640f1111e"
 
@@ -63,4 +59,3 @@ def get_news(db: Session = Depends(database.get_db)):
     combined_news = {"newsapi": processed_news, "wsj": processed_wsj}
     logger.info(f"Combined news: {combined_news}")
     return combined_news
-
