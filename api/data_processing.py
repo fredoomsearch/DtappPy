@@ -37,6 +37,7 @@ def process_news_data(news_data):
                 processed_data.append(article_copy)
     return processed_data
 
+@router.get("/news")
 @router.get("/news/")
 def get_news(db: Session = Depends(database.get_db)):
     """
@@ -61,5 +62,4 @@ def get_news(db: Session = Depends(database.get_db)):
     combined_news = {"newsapi": processed_news, "wsj": processed_wsj}
     logger.info(f"Combined news: {combined_news}")
     return combined_news
-
 
