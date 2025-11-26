@@ -1,0 +1,4 @@
+#LICENCE
+ALL RIGHTS RESERVEDS
+
+Julian Esteban Grajales 2025. 
