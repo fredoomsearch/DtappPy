@@ -1,13 +1,18 @@
+# Use a lightweight Python image
 FROM python:3.11-slim
 
+# Set the working directory inside the container
 WORKDIR /Backend
 
+# Copy the requirements file and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Copy the FastAPI app code into the container
+COPY . /Backend/
 
+# Expose the port FastAPI will run on
 EXPOSE 8000
 
-# Render sets $PORT, so we use sh -c to expand env vars
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Command to run the FastAPI app
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
